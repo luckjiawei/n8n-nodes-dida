@@ -1,11 +1,11 @@
-# n8n-nodes-ticktick
+# n8n-nodes-dida
 
 
 [n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
 
-This is an n8n community node. It lets you use TickTick in your n8n workflows.
+This is an n8n community node. It lets you use dida in your n8n workflows.
 
-TickTick is a comprehensive productivity app designed to help individuals and teams manage tasks, deadlines, and projects more efficiently. With its intuitive interface, TickTick allows users to easily create, organize, and prioritize tasks, set reminders, and track progress through various views such as lists, kanban boards, and calendars.
+dida is a comprehensive productivity app designed to help individuals and teams manage tasks, deadlines, and projects more efficiently. With its intuitive interface, dida allows users to easily create, organize, and prioritize tasks, set reminders, and track progress through various views such as lists, kanban boards, and calendars.
 
 [Installation](#installation)  
 [Task Operations](#task-operations)  
@@ -137,8 +137,8 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 
 ## Credentials
 
-1. Add credential in your n8n instance and select **TickTick OAuth2 API**
-2. Visit: [TickTick Developer](https://developer.ticktick.com/)
+1. Add credential in your n8n instance and select **dida OAuth2 API**
+2. Visit: [dida Developer](https://developer.dida.com/)
 3. Manage Apps > New App
 4. Copy **Client ID** and **Client Secret** > Paste in n8n credential
 5. Allow connection
@@ -158,7 +158,7 @@ Tested successfully with:
 ### Start date / Due date Parameter
 
 Both parameters will be implemented correctly in the next release. 
-Until then, please refer to the TickTick API documentation for the correct input: 
+Until then, please refer to the dida API documentation for the correct input: 
 
 startDate Parameter:
 Subtask start date time in "yyyy-MM-dd'T'HH:mm:ssZ"
@@ -170,26 +170,26 @@ Example : "2019-11-13T03:00:00+0000"
 
 
 
-### TickTick API Response for Certain Requests
+### dida API Response for Certain Requests
 
-As of the current version of this project, it's important for users to be aware that the TickTick API has specific behaviors regarding the responses for certain operations. Notably:
+As of the current version of this project, it's important for users to be aware that the dida API has specific behaviors regarding the responses for certain operations. Notably:
 
-- **No Content Responses**: For some operations, such as deleting a project or completing a task, the TickTick API returns an HTTP status code indicating success (e.g., `200 OK`) but does not include any response body. This means that while these operations can be successfully executed, the API does not provide additional data or confirmation in the response body.
+- **No Content Responses**: For some operations, such as deleting a project or completing a task, the dida API returns an HTTP status code indicating success (e.g., `200 OK`) but does not include any response body. This means that while these operations can be successfully executed, the API does not provide additional data or confirmation in the response body.
 
 - **Handling of API Responses**: This custom node has been designed to interpret HTTP status codes as indicators of the success or failure of an operation. Since no further details are provided by the API for certain requests, the node generates its own success messages for user feedback. Users should rely on these status codes and custom messages for confirmation of operation outcomes.
 
-- **API Documentation Discrepancies**: Users may also encounter instances where the behavior of the TickTick API does not fully align with its documentation, particularly regarding the response data for certain requests. We recommend users to proceed with caution and validate the functionality through testing, especially for critical workflows.
+- **API Documentation Discrepancies**: Users may also encounter instances where the behavior of the dida API does not fully align with its documentation, particularly regarding the response data for certain requests. We recommend users to proceed with caution and validate the functionality through testing, especially for critical workflows.
 
 This project's implementation takes these API characteristics into account, aiming to provide clear and useful feedback to users whenever possible. However, users are encouraged to conduct their own testing and verification to ensure the node meets their specific needs.
 
-Future updates to the TickTick API may address these issues, and subsequent versions of this project will aim to incorporate any changes to enhance functionality and user experience.
+Future updates to the dida API may address these issues, and subsequent versions of this project will aim to incorporate any changes to enhance functionality and user experience.
 
 ## Resources
 
 - [n8n Website](https://n8n.io/)
 - [n8n community nodes documentation](https://docs.n8n.io/integrations/community-nodes/)
-- [TickTick Website](https://www.ticktick.com/)
-- [TickTick Open API documentation](https://developer.ticktick.com/docs#/openapi)
+- [dida Website](https://www.dida.com/)
+- [dida Open API documentation](https://developer.dida.com/docs#/openapi)
 
 ## Version history
 

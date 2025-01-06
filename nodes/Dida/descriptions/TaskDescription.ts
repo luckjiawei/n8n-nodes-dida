@@ -150,7 +150,7 @@ export const taskFields: INodeProperties[] = [
 			},
 		},
 		description:
-			'Object of values to set as described <a href="https://developer.ticktick.com/">here</a>',
+			'Object of values to set as described <a href="https://developer.dida.com/">here</a>',
 	},
 	{
 		displayName: 'Additional Fields',
@@ -352,7 +352,7 @@ export const taskFields: INodeProperties[] = [
 			},
 		},
 		description:
-			'Object of values to set as described <a href="https://developer.ticktick.com/">here</a>',
+			'Object of values to set as described <a href="https://developer.dida.com/">here</a>',
 	},
 	{
 		displayName: 'Additional Fields',

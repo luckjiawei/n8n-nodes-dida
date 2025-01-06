@@ -8,11 +8,11 @@ import {
 	NodeOperationError,
 } from 'n8n-workflow';
 
-import { tickTickApiRequest, getProjects, getTasks } from './GenericFunctions';
+import { didaApiRequest, getProjects, getTasks } from './GenericFunctions';
 
 import { taskFields, taskOperations, projectFields, projectOperations } from './descriptions';
 
-export class TickTick implements INodeType {
+export class Dida implements INodeType {
 	methods = {
 		loadOptions: {
 			async getProjects(this: ILoadOptionsFunctions): Promise<{ name: string; value: string }[]> {
@@ -26,21 +26,21 @@ export class TickTick implements INodeType {
 	};
 
 	description: INodeTypeDescription = {
-		displayName: 'TickTick',
-		name: 'tickTick',
-		icon: 'file:ticktick.svg',
+		displayName: 'dida',
+		name: 'dida',
+		icon: 'file:dida.svg',
 		group: ['transform'],
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
 		version: 1,
-		description: 'TickTick is a powerful task management application',
+		description: 'dida is a powerful task management application',
 		defaults: {
-			name: 'TickTick',
+			name: 'dida',
 		},
 		inputs: ['main'],
 		outputs: ['main'],
 		credentials: [
 			{
-				name: 'tickTickOAuth2Api',
+				name: 'didaOAuth2Api',
 				required: true,
 			},
 		],
@@ -115,7 +115,7 @@ export class TickTick implements INodeType {
 						}
 
 						const endpoint = '/open/v1/project';
-						responseData = await tickTickApiRequest.call(this, 'POST', endpoint, body);
+						responseData = await didaApiRequest.call(this, 'POST', endpoint, body);
 						break;
 					}
 					//---------------------------------
@@ -131,7 +131,7 @@ export class TickTick implements INodeType {
 								endpoint += '/data';
 							}
 						}
-						responseData = await tickTickApiRequest.call(this, 'GET', endpoint);
+						responseData = await didaApiRequest.call(this, 'GET', endpoint);
 						break;
 					}
 					//---------------------------------
@@ -180,7 +180,7 @@ export class TickTick implements INodeType {
 						}
 
 						const endpoint = `/open/v1/project/${projectId}`;
-						responseData = await tickTickApiRequest.call(this, 'POST', endpoint, body);
+						responseData = await didaApiRequest.call(this, 'POST', endpoint, body);
 						break;
 					}
 					//---------------------------------
@@ -189,7 +189,7 @@ export class TickTick implements INodeType {
 					case 'delete': {
 						const projectId = this.getNodeParameter('projectId', i) as string;
 						const endpoint = `/open/v1/project/${projectId}`;
-						responseData = await tickTickApiRequest.call(this, 'DELETE', endpoint);
+						responseData = await didaApiRequest.call(this, 'DELETE', endpoint);
 						break;
 					}
 					default:
@@ -239,7 +239,7 @@ export class TickTick implements INodeType {
 						Object.keys(body).forEach((key) => body[key] === undefined && delete body[key]);
 
 						const endpoint = '/open/v1/task';
-						responseData = await tickTickApiRequest.call(this, 'POST', endpoint, body);
+						responseData = await didaApiRequest.call(this, 'POST', endpoint, body);
 						break;
 					}
 					//---------------------------------
@@ -249,7 +249,7 @@ export class TickTick implements INodeType {
 						const projectId = this.getNodeParameter('projectId', i) as string;
 						const taskId = this.getNodeParameter('taskId', i) as string;
 						const endpoint = `/open/v1/project/${projectId}/task/${taskId}`;
-						responseData = await tickTickApiRequest.call(this, 'GET', endpoint);
+						responseData = await didaApiRequest.call(this, 'GET', endpoint);
 						break;
 					}
 					//---------------------------------
@@ -288,7 +288,7 @@ export class TickTick implements INodeType {
 
 						const taskId = this.getNodeParameter('taskId', i) as string;
 						const endpoint = `/open/v1/task/${taskId}`;
-						responseData = await tickTickApiRequest.call(this, 'POST', endpoint, body);
+						responseData = await didaApiRequest.call(this, 'POST', endpoint, body);
 						break;
 					}
 					//---------------------------------
@@ -298,7 +298,7 @@ export class TickTick implements INodeType {
 						const projectId = this.getNodeParameter('projectId', i) as string;
 						const taskId = this.getNodeParameter('taskId', i) as string;
 						const endpoint = `/open/v1/project/${projectId}/task/${taskId}/complete`;
-						responseData = await tickTickApiRequest.call(this, 'POST', endpoint, {});
+						responseData = await didaApiRequest.call(this, 'POST', endpoint, {});
 						break;
 					}
 					//---------------------------------
@@ -308,7 +308,7 @@ export class TickTick implements INodeType {
 						const projectId = this.getNodeParameter('projectId', i) as string;
 						const taskId = this.getNodeParameter('taskId', i) as string;
 						const endpoint = `/open/v1/project/${projectId}/task/${taskId}`;
-						responseData = await tickTickApiRequest.call(this, 'DELETE', endpoint);
+						responseData = await didaApiRequest.call(this, 'DELETE', endpoint);
 						break;
 					}
 				}

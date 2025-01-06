@@ -1,10 +1,10 @@
 import { ICredentialType, INodeProperties } from 'n8n-workflow';
 
-export class TickTickOAuth2Api implements ICredentialType {
-	name = 'tickTickOAuth2Api';
+export class DidaOAuth2Api implements ICredentialType {
+	name = 'didaOAuth2Api';
 	extends = ['oAuth2Api'];
-	displayName = 'TickTick OAuth2 API';
-	documentationUrl = 'https://developer.ticktick.com/api#/openapi';
+	displayName = 'Dida365 OAuth2 API';
+	documentationUrl = 'https://developer.dida.com/api#/openapi';
 
 	properties: INodeProperties[] = [
 		{
@@ -17,14 +17,14 @@ export class TickTickOAuth2Api implements ICredentialType {
 			displayName: 'Authorization URL',
 			name: 'authUrl',
 			type: 'hidden',
-			default: 'https://ticktick.com/oauth/authorize',
+			default: 'https://dida.com/oauth/authorize',
 			required: true,
 		},
 		{
 			displayName: 'Access Token URL',
 			name: 'accessTokenUrl',
 			type: 'hidden',
-			default: 'https://ticktick.com/oauth/token',
+			default: 'https://dida.com/oauth/token',
 			required: true,
 		},
 		{

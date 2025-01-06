@@ -25,7 +25,7 @@ export async function getProjects(
 ): Promise<{ name: string; value: string }[]> {
 	const endpoint = '/open/v1/project';
 	try {
-		const responseData: Project[] = await tickTickApiRequest.call(this, 'GET', endpoint);
+		const responseData: Project[] = await didaApiRequest.call(this, 'GET', endpoint);
 		return responseData.map((project: Project) => ({
 			name: project.name,
 			value: project.id,
@@ -45,7 +45,7 @@ export async function getTasks(
 
 	const endpoint = `/open/v1/project/${projectId}/data`;
 	try {
-		const responseData = (await tickTickApiRequest.call(this, 'GET', endpoint)) as IDataObject;
+		const responseData = (await didaApiRequest.call(this, 'GET', endpoint)) as IDataObject;
 		// Assuming tasks are part of the response and each task has a title (for name) and an id (for value)
 		const tasks = responseData.tasks as IDataObject[];
 
@@ -59,14 +59,14 @@ export async function getTasks(
 	}
 }
 
-export async function tickTickApiRequest(
+export async function didaApiRequest(
 	this: IExecuteFunctions | IHookFunctions | ILoadOptionsFunctions,
 	method: IHttpRequestMethods,
 	endpoint: string,
 	body: IDataObject = {},
 	qs: IDataObject = {},
 ) {
-	const baseUrl = 'https://ticktick.com';
+	const baseUrl = 'https://dida.com';
 	const options: IHttpRequestOptions = {
 		method,
 		body,
@@ -76,7 +76,7 @@ export async function tickTickApiRequest(
 	};
 
 	try {
-		const responseData = await this.helpers.requestOAuth2?.call(this, 'tickTickOAuth2Api', options);
+		const responseData = await this.helpers.requestOAuth2?.call(this, 'didaOAuth2Api', options);
 
 		return responseData;
 	} catch (error) {
